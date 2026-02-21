@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.status import HTTP_401_UNAUTHORIZED
 from .logging_config import setup_logging
 from .api.server_routes import router as server_router
@@ -9,6 +10,15 @@ setup_logging()
 logger = logging.getLogger("app")
 
 app = FastAPI(title="CS1.6 A2S API")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (change to specific URLs in production)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(server_router)
 
