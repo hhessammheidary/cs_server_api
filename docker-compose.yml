@@ -1,0 +1,18 @@
+services:
+  api:
+    build: .
+    container_name: cs1_6_api
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - UVICORN_HOST=0.0.0.0
+      - UVICORN_PORT=8000
+    volumes:
+      - ./logs:/app/logs
+      - ./servers.json:/app/servers.json:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/instanceAll || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

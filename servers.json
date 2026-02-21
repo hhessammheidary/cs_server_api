@@ -1,0 +1,7 @@
+[
+  {"ip": "94.101.179.89", "port": 27015, "mod": "GunGame", "server_name": "tournofa-GunGame"},
+  {"ip": "94.101.179.89", "port": 27025, "mod": "FightYard", "server_name": "tournofa-FightYard"},
+  {"ip": "94.101.179.89", "port": 27035, "mod": "AWP", "server_name": "tournofa-AWP"},
+  {"ip": "94.101.179.89", "port": 27045, "mod": "DeathMatch", "server_name": "tournofa-DeathMatch"},
+  {"ip": "94.101.179.89", "port": 27055, "mod": "GunGame", "server_name": "tournofa-GunGame-2"}
+]
