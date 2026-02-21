@@ -2,11 +2,17 @@ import json
 import os
 from pathlib import Path
 from typing import List, Dict
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 BASE = Path("/app") if Path("/app").exists() else Path(".")
 SERVERS_FILE = os.environ.get("SERVERS_FILE", str(BASE / "servers.json"))
 
 QUERY_TIMEOUT = float(os.environ.get("QUERY_TIMEOUT", "3.0"))
+
+API_KEY = os.environ.get("API_KEY", "your-secret-api-key-here-change-this")
 
 def load_servers() -> List[Dict]:
     p = Path(SERVERS_FILE)

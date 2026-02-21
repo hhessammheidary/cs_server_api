@@ -1,6 +1,8 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
+from starlette.status import HTTP_401_UNAUTHORIZED
 from .logging_config import setup_logging
 from .api.server_routes import router as server_router
+from .config import API_KEY
 import logging, time
 
 setup_logging()
@@ -11,7 +13,18 @@ app = FastAPI(title="CS1.6 A2S API")
 app.include_router(server_router)
 
 @app.middleware("http")
-async def log_requests(request: Request, call_next):
+async def api_key_middleware(request: Request, call_next):
+    # Skip API key check for root endpoint
+    if request.url.path == "/":
+        return await call_next(request)
+    
+    # Extract API key from header or query parameter
+    api_key = request.headers.get("X-API-Key") or request.query_params.get("X-API-Key")
+    
+    if not api_key or api_key != API_KEY:
+        logger.warning("Unauthorized request to %s from %s", request.url.path, request.client.host)
+        raise HTTPException(status_code=HTTP_401_UNAUTHORIZED, detail="Invalid or missing API key")
+    
     start = time.time()
     logger.info("HTTP %s %s", request.method, request.url.path)
     response = await call_next(request)

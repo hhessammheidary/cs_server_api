@@ -276,3 +276,256 @@ IsADirectoryError: [Errno 21] Is a directory: '/app/servers.json'
 2026-02-08 09:28:39,219 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27055
 2026-02-08 09:28:39,703 [INFO] app: Completed GET /instanceAll in 0.495s -> 200
 2026-02-08 09:28:39,705 [INFO] uvicorn.access: 172.18.0.1:54072 - "GET /instanceAll HTTP/1.1" 200
+2026-02-21 14:02:40,686 [WARNING] app: Unauthorized request to /serverList from 172.18.0.1
+2026-02-21 14:02:40,687 [INFO] uvicorn.access: 172.18.0.1:39026 - "POST /serverList?X-API-Key=sk_live_7lG6Jk5xuJfoepe4qxo1zilZ3S4UQT1d HTTP/1.1" 500
+2026-02-21 14:02:40,688 [ERROR] uvicorn.error: Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/base.py", line 192, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/usr/local/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1135, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    |     raise exc
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/base.py", line 194, in __call__
+    |     await response(scope, wrapped_receive, send)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | TypeError: 'HTTPException' object is not callable
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/base.py", line 194, in __call__
+    await response(scope, wrapped_receive, send)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'HTTPException' object is not callable
+2026-02-21 14:12:51,529 [WARNING] app: Unauthorized request to /serverList from 127.0.0.1
+2026-02-21 14:12:51,529 [INFO] uvicorn.access: 127.0.0.1:50659 - "POST /serverList?X-API-Key=sk_live_7lG6Jk5xuJfoepe4qxo1zilZ3S4UQT1d HTTP/1.1" 500
+2026-02-21 14:12:51,530 [ERROR] uvicorn.error: Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 192, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         self.scope, self.receive, self.send
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     )
+    |     ^
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\fastapi\applications.py", line 1135, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    |     raise exc
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |                                    ~~~~~~~~~~~~~~~~~~^^
+    |   File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 194, in __call__
+    |     await response(scope, wrapped_receive, send)
+    |           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | TypeError: 'HTTPException' object is not callable
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\fastapi\applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 194, in __call__
+    await response(scope, wrapped_receive, send)
+          ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'HTTPException' object is not callable
+2026-02-21 14:17:30,914 [WARNING] app: Unauthorized request to /serverList from 127.0.0.1
+2026-02-21 14:17:30,915 [INFO] uvicorn.access: 127.0.0.1:58748 - "POST /serverList?X-API-Key=sk_live_7lG6Jk5xuJfoepe4qxo1zilZ3S4UQT1d HTTP/1.1" 500
+2026-02-21 14:17:30,915 [ERROR] uvicorn.error: Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 192, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         self.scope, self.receive, self.send
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     )
+    |     ^
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\fastapi\applications.py", line 1135, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    |     raise exc
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |                                    ~~~~~~~~~~~~~~~~~~^^
+    |   File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 194, in __call__
+    |     await response(scope, wrapped_receive, send)
+    |           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | TypeError: 'HTTPException' object is not callable
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\fastapi\applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "C:\Users\hesam\Desktop\cs_server_api\.venv\Lib\site-packages\starlette\middleware\base.py", line 194, in __call__
+    await response(scope, wrapped_receive, send)
+          ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'HTTPException' object is not callable
+2026-02-21 14:18:28,246 [INFO] app: HTTP POST /serverList
+2026-02-21 14:18:28,247 [INFO] app: Completed POST /serverList in 0.001s -> 405
+2026-02-21 14:18:28,247 [INFO] uvicorn.access: 127.0.0.1:50166 - "POST /serverList?X-API-Key=sk_live_7lG6Jk5xuJfoepe4qxo1zilZ3S4UQT1d HTTP/1.1" 405
+2026-02-21 14:20:21,968 [INFO] app: HTTP GET /serverList
+2026-02-21 14:20:21,969 [INFO] app: Received /instanceAll
+2026-02-21 14:20:21,970 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27015
+2026-02-21 14:20:21,991 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27025
+2026-02-21 14:20:21,991 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27035
+2026-02-21 14:20:21,992 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27045
+2026-02-21 14:20:21,992 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27055
+2026-02-21 14:20:25,000 [WARNING] app.services.a2s_service: Timeout querying server 94.101.179.89:27035
+2026-02-21 14:20:25,001 [WARNING] app.services.a2s_service: Timeout querying server 94.101.179.89:27045
+2026-02-21 14:20:25,003 [INFO] app: Completed GET /serverList in 3.035s -> 200
+2026-02-21 14:20:25,004 [INFO] uvicorn.access: 127.0.0.1:51275 - "GET /serverList?X-API-Key=sk_live_7lG6Jk5xuJfoepe4qxo1zilZ3S4UQT1d HTTP/1.1" 200
+2026-02-21 14:21:22,054 [INFO] app: HTTP GET /serverList
+2026-02-21 14:21:22,057 [INFO] app: Received /instanceAll
+2026-02-21 14:21:22,060 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27015
+2026-02-21 14:21:22,060 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27025
+2026-02-21 14:21:22,061 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27035
+2026-02-21 14:21:22,062 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27045
+2026-02-21 14:21:22,062 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27055
+2026-02-21 14:21:25,067 [WARNING] app.services.a2s_service: Timeout querying server 94.101.179.89:27035
+2026-02-21 14:21:25,069 [WARNING] app.services.a2s_service: Timeout querying server 94.101.179.89:27045
+2026-02-21 14:21:25,071 [INFO] app: Completed GET /serverList in 3.017s -> 200
+2026-02-21 14:21:25,072 [INFO] uvicorn.access: 172.18.0.1:48054 - "GET /serverList?X-API-Key=sk_live_7lG6Jk5xuJfoepe4qxo1zilZ3S4UQT1d HTTP/1.1" 200

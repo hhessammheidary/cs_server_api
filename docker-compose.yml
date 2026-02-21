@@ -8,6 +8,8 @@ services:
     environment:
       - UVICORN_HOST=0.0.0.0
       - UVICORN_PORT=8000
+    env_file:
+      - .env
     volumes:
       - ./logs:/app/logs
       - ./servers.json:/app/servers.json:ro
