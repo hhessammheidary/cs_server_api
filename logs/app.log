@@ -767,3 +767,154 @@ fastapi.exceptions.HTTPException: 401: Invalid or missing API key
 2026-02-22 11:58:06,599 [WARNING] app.services.a2s_service: Timeout querying server 94.101.179.89:27045
 2026-02-22 11:58:06,601 [INFO] app: Completed GET /serverList in 3.023s -> 200
 2026-02-22 11:58:06,602 [INFO] uvicorn.access: 127.0.0.1:33978 - "GET /serverList HTTP/1.1" 200
+2026-02-22 12:29:57,392 [WARNING] app: Unauthorized request to /serverList from 127.0.0.1
+2026-02-22 12:29:57,393 [INFO] uvicorn.access: 127.0.0.1:54178 - "GET /serverList HTTP/1.1" 500
+2026-02-22 12:29:57,394 [ERROR] uvicorn.error: Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 192, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1135, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    |     raise exc
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(value)
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/app/main.py", line 35, in api_key_middleware
+    |     raise HTTPException(status_code=HTTP_401_UNAUTHORIZED, detail="Invalid or missing API key")
+    | fastapi.exceptions.HTTPException: 401: Invalid or missing API key
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/app/main.py", line 35, in api_key_middleware
+    raise HTTPException(status_code=HTTP_401_UNAUTHORIZED, detail="Invalid or missing API key")
+fastapi.exceptions.HTTPException: 401: Invalid or missing API key
+2026-02-22 12:30:06,955 [WARNING] app: Unauthorized request to /serverList from 127.0.0.1
+2026-02-22 12:30:06,956 [INFO] uvicorn.access: 127.0.0.1:54192 - "GET /serverList HTTP/1.1" 500
+2026-02-22 12:30:06,957 [ERROR] uvicorn.error: Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 192, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    |     result = await app(  # type: ignore[func-returns-value]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    |     return await self.app(scope, receive, send)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1135, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    |     raise exc
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    |     self.gen.throw(value)
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/app/main.py", line 35, in api_key_middleware
+    |     raise HTTPException(status_code=HTTP_401_UNAUTHORIZED, detail="Invalid or missing API key")
+    | fastapi.exceptions.HTTPException: 401: Invalid or missing API key
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hesam/Desktop/work/cs-server-api/cs_server_api/app/main.py", line 35, in api_key_middleware
+    raise HTTPException(status_code=HTTP_401_UNAUTHORIZED, detail="Invalid or missing API key")
+fastapi.exceptions.HTTPException: 401: Invalid or missing API key
+2026-02-22 12:30:26,840 [INFO] app: HTTP GET /serverList
+2026-02-22 12:30:26,844 [INFO] app: Received /instanceAll
+2026-02-22 12:30:26,845 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27015
+2026-02-22 12:30:26,850 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27025
+2026-02-22 12:30:26,852 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27035
+2026-02-22 12:30:26,853 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27045
+2026-02-22 12:30:26,855 [DEBUG] app.services.a2s_service: Querying A2S 94.101.179.89:27055
+2026-02-22 12:30:29,857 [WARNING] app.services.a2s_service: Timeout querying server 94.101.179.89:27035
+2026-02-22 12:30:29,859 [WARNING] app.services.a2s_service: Timeout querying server 94.101.179.89:27045
+2026-02-22 12:30:29,861 [INFO] app: Completed GET /serverList in 3.021s -> 200
+2026-02-22 12:30:29,862 [INFO] uvicorn.access: 127.0.0.1:46894 - "GET /serverList?X-API-Key=sk_live_7lG6Jk5xuJfoepe4qxo1zilZ3S4UQT1d HTTP/1.1" 200
